@@ -58,6 +58,23 @@ function mostrarProductos(productos) {
 
 //fin punto 3
 
+//inicio punto 8 ordenado por nombre y por precio
+
+function ordenarPorNombre() {
+    const ordenado = [...listaFrutas].sort((a, b) =>
+        a.nombre.localeCompare(b.nombre)
+    );
+
+    mostrarProductos(ordenado);
+}
+
+function ordenarPorPrecio() {
+    const ordenado = [...listaFrutas].sort((a, b) => a.precio - b.precio);
+    mostrarProductos(ordenado);
+}
+
+//fin punto 8
+
 
 //punto 4 filtrado de productos
 function aplicarFiltro() {
@@ -140,13 +157,41 @@ function cargarCarritoDesdeLocalStorage() {
     return data ? JSON.parse(data) : [];
 }
 
+//fin punto 6
 
+//inicio punto 7 contador y precio total
 
+function actualizarContadorCarrito() {
+    const totalProductos = carrito.reduce((acc, item) => acc + item.cantidad, 0);
+    document.querySelector("#contador-carrito").textContent = totalProductos;
+  }
+  
+  function actualizarTotal() {
+    const total = carrito.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
+    document.querySelector("#precio-total").textContent = `$${total}`;
+  }
+  
+//fin punto 7
+
+//inicio punto 9
+function vaciarCarrito() {
+    localStorage.removeItem("carrito");
+    carrito = [];
+    mostrarCarrito();
+}
+
+//fin punto 9
 
 function init() {
     imprimirDatosAlumno();
+    carrito = cargarCarritoDesdeLocalStorage(); // actualizado al aparecere punto 6
+    mostrarCarrito(); //idem al aparecer punto
     mostrarProductos(listaFrutas);
     aplicarFiltro();
+    document.querySelector("#ordenar-nombre").addEventListener("click", ordenarPorNombre);
+    document.querySelector("#ordenar-precio").addEventListener("click", ordenarPorPrecio);
+    document.getElementById("btn-vaciar-carrito").addEventListener("click", vaciarCarrito);
+
 }
 
 window.addEventListener("DOMContentLoaded", init);
