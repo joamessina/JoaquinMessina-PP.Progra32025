@@ -1,65 +1,89 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parcial I</title>
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frutería | Parcial</title>
 
-    <script defer src="js/main.js"></script>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
 
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+
+  <!-- Estilos propios -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Lógica JS -->
+  <script defer src="js/main.js"></script>
 </head>
-
 <body>
 
-    <!-- Header -->
-    <header class="header">
+  <!-- Header -->
+  <header class="navbar navbar-expand-lg navbar-dark bg-success px-4 py-3">
+    <a class="navbar-brand fw-bold" href="#">Frutería</a>
 
-        <a href="index.html">
-            <div class="logo">Frutería</div>
-        </a>
-        
-        <div class="nombreAlumno"></div>
-        
-        <input type="text" placeholder="Buscar..." class="barra-busqueda">
-        
-        <div class="carrito">
-            <span>Carrito: <span id="contador-carrito">0</span> productos</span>
-        </div>
-    </header>
+    <div class="text-white ms-auto me-3" id="nombre-alumno"></div>
 
-    
-    <!-- Contenedor principal -->
-    <main>
-    <section class="seccion-productos">
-        <h2>Nuestras frutas</h2>
-        <div class="botones-orden">
-            <button id="ordenar-nombre">Ordenar por nombre</button> <!--boton para funcionalidad punto 8-->
-            <button id="ordenar-precio">Ordenar por precio</button> <!--boton para funcionalidad punto 8-->
-        </div>
-        <div class="contenedor-productos"></div>
+    <form class="d-flex me-3" role="search">
+      <input class="form-control" type="search" placeholder="Buscar..." id="buscador">
+    </form>
+
+    <div class="text-white">
+      Carrito: <span id="contador-carrito" class="fw-bold">0</span> productos
+    </div>
+  </header>
+
+  <div class="alert alert-success text-center rounded-0 m-0" id="bienvenida"></div>
+
+  <!-- Main -->
+  <main class="container my-5">
+
+    <!-- Sección productos -->
+    <section class="seccion-productos mb-5">
+      <h2 class="text-center mb-4">Nuestras frutas</h2>
+
+      <!-- Botones de orden -->
+      <div class="d-flex justify-content-center gap-3 mb-4">
+        <button id="btn-ordenar-nombre" class="btn btn-success">
+            <i class="bi bi-sort-alpha-down me-1"></i>Ordenar por nombre
+          </button>
+          
+          <button id="btn-ordenar-precio" class="btn btn-success">
+            <i class="bi bi-sort-numeric-down me-1"></i>Ordenar por precio
+          </button>
+      </div>
+
+      <!-- Frutas -->
+      <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-4" id="contenedor-productos">
+        <!-- JS inyectará las cards -->
+      </div>
     </section>
 
-
-    <!-- Seccion carrito -->
+    <!-- Sección carrito -->
     <section class="seccion-carrito">
-        <button id="btn-vaciar-carrito">Vaciar carrito</button>
-        <h2>Carrito</h2>
-        
-        <div id="items-carrito">
-            <p>No hay elementos en el carrito.</p>
-        </div>
+      <h2 class="text-center mb-4">Carrito</h2>
 
-        <div class="total-carrito">
-            <p>Total: <span id="precio-total">$0.00</span></p>
-        
-        </div>
+      <!-- Lista de items -->
+      <ul id="items-carrito" class="list-group mb-3">
+        <li class="list-group-item">No hay elementos en el carrito.</li>
+      </ul>
+
+      <!-- Total y botón vaciar -->
+      <div class="d-flex justify-content-between align-items-center">
+        <button id="btn-vaciar-carrito" class="btn btn-outline-danger"><i class="bi bi-x-circle-fill me-1"></i>Vaciar carrito</button>
+        <p class="fs-5">Total: <span id="precio-total" class="fw-bold text-warning">$0</span></p>
+      </div>
     </section>
 
-    </main>
+  </main>
+
+  <!-- Bootstrap JS (opcional si necesitás componentes JS de Bootstrap) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Toast visual -->
+    <div id="toast" class="toast-mensaje"></div>
+
 </body>
 </html>

@@ -1,9 +1,6 @@
 /* Estilos globales */
 body {
   font-family: 'Rubik', sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
   background-color: #1f1f1f;
   color: white;
 }
@@ -17,6 +14,12 @@ a {
   text-decoration: none;
   color: white;
 }
+
+.btn-agregado {
+  transform: scale(1.1);
+  background-color: #20c997 !important;
+}
+
 
 /* --- Header --- */
 header {
@@ -63,15 +66,11 @@ header > a {
 }
 
 .card-producto {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: #000;
+  color: white;
+  border-radius: 12px;
   padding: 15px;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-  width: 180px;
-  transition: transform 0.2s ease;
-
+  height: 100%;
 }
 
 .card-producto:hover {
@@ -80,37 +79,41 @@ header > a {
 
 /* Imagen dentro de la card centrada */
 .card-producto img {
-  width: 100%;
-  height: 120px;
+  height: 140px;
   object-fit: contain;
-  border-radius: 5px;
-  margin-bottom: 10px;
+  border-radius: 8px;
+  background-color: white;
+  padding: 5px;
 }
 
 /* Botón "Agregar al carrito" */
 .card-producto button {
-  margin-top: 10px;
-  background-color: #28a745;
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  width: 100%;
 }
 
 .card-producto h3 {
-  font-size: 1.2rem;
-  margin: 10px 0;
+  font-size: 1.1rem;
+  margin-top: 10px;
+  text-transform: capitalize;
 }
 
 .card-producto p {
   font-size: 1rem;
-  color: #333;
+  margin-bottom: 8px;
+  color: #ca9013;
 }
 
 .card-producto button:hover {
   background-color: #218838;
+}
+
+.list-group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1f1f1f;
+  color: white;
+  border: 1px solid #444;
 }
 
 /* Contenedor de todas las cards */
@@ -125,7 +128,7 @@ header > a {
 /* Carrito */
 .seccion-carrito h2 {
   text-align: center;
-  color: #000;
+  color: white;
 }
 
 /* Cada ítem del carrito */
@@ -142,13 +145,12 @@ header > a {
 
 /* Botón eliminar */
 .boton-eliminar {
-  background-color: red;
-  color: white;
+  background-color: crimson;
   border: none;
-  padding: 6px 12px;
+  padding: 5px 10px;
+  color: white;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 0.9rem;
 }
 
 .boton-eliminar:hover {
@@ -158,15 +160,9 @@ header > a {
 /* Total abajo a la derecha */
 .total-carrito {
   font-size: 1.1rem;
-  color: black;
+  color: #ca9013;
   text-align: right;
   margin-top: 10px;
-}
-
-/* Botón vaciar carrito */
-#btn-vaciar-carrito {
-  display: block;
-  margin: 20px auto;
 }
 
 /* Responsive mínimo */
@@ -193,22 +189,22 @@ header > a {
 /* Seccion carrito */
 .seccion-carrito {
   padding: 20px;
-  background-color: #f8f9fa;
-  border-top: 1px solid #ccc;
+  background-color: #111;
+  border-top: 1px solid #333;
+  color: white
 }
 
 #items-carrito {
   padding: 10px 0;
   list-style-type: none;
+  background-color: #111;
+  border-radius: 10px;
 }
 
 .nombre-item, .info-carrito {
   font-size: 20px;
 }
 
-.boton-eliminar {
-  cursor: pointer;
-}
 
 .hidden {
   display: none;
@@ -216,11 +212,6 @@ header > a {
 
 .visible {
   display: block;
-}
-
-.total-carrito {
-  font-size: 1.2rem;
-  text-align: right;
 }
 
 /*css para el punto 8*/
@@ -264,3 +255,24 @@ header > a {
 }
 
 /*fin css punto 9*/
+
+/* Toast visual */
+.toast-mensaje {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #28a745;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-size: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 999;
+}
+
+.toast-mensaje.visible {
+  opacity: 1;
+}
